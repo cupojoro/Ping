@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		18EBB3261E21BEAC002D7A33 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EBB3251E21BEAC002D7A33 /* main.m */; };
 		18EBB3291E21BEAC002D7A33 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EBB3281E21BEAC002D7A33 /* AppDelegate.m */; };
-		18EBB32C1E21BEAC002D7A33 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EBB32B1E21BEAC002D7A33 /* ViewController.m */; };
 		18EBB3311E21BEAC002D7A33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18EBB3301E21BEAC002D7A33 /* Assets.xcassets */; };
 		18EBB33F1E21BEAC002D7A33 /* PingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EBB33E1E21BEAC002D7A33 /* PingTests.m */; };
 		18EBB34A1E21BEAC002D7A33 /* PingUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EBB3491E21BEAC002D7A33 /* PingUITests.m */; };
@@ -42,8 +41,6 @@
 		18EBB3251E21BEAC002D7A33 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		18EBB3271E21BEAC002D7A33 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		18EBB3281E21BEAC002D7A33 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		18EBB32A1E21BEAC002D7A33 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		18EBB32B1E21BEAC002D7A33 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		18EBB3301E21BEAC002D7A33 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18EBB3351E21BEAC002D7A33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18EBB33A1E21BEAC002D7A33 /* PingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -121,8 +118,6 @@
 				18EBB3581E21C3D4002D7A33 /* HomeView */,
 				18EBB3271E21BEAC002D7A33 /* AppDelegate.h */,
 				18EBB3281E21BEAC002D7A33 /* AppDelegate.m */,
-				18EBB32A1E21BEAC002D7A33 /* ViewController.h */,
-				18EBB32B1E21BEAC002D7A33 /* ViewController.m */,
 				18EBB3301E21BEAC002D7A33 /* Assets.xcassets */,
 				18EBB3351E21BEAC002D7A33 /* Info.plist */,
 				18EBB3241E21BEAC002D7A33 /* Supporting Files */,
@@ -467,7 +462,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18EBB32C1E21BEAC002D7A33 /* ViewController.m in Sources */,
 				18EBB3291E21BEAC002D7A33 /* AppDelegate.m in Sources */,
 				18EBB36B1E21C5D1002D7A33 /* PGHomeVC.m in Sources */,
 				18EBB3261E21BEAC002D7A33 /* main.m in Sources */,

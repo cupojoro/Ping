@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 
+#import "PGHomeVC.h"
+
 @interface AppDelegate ()
 
 @end
@@ -20,6 +22,12 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
+    PGHomeVC *homeVC = [[PGHomeVC alloc] init];
+    UINavigationController* navController = [[UINavigationController alloc] initWithRootViewController:homeVC];
+    
+    self.window.rootViewController = navController;
+    
     return YES;
 }
 
