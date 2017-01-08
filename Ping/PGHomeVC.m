@@ -140,13 +140,21 @@
     }];
     //NSLog(@"\nAnimation Duration : %@", [info objectForKey:UIKeyboardAnimationDurationUserInfoKey]);
     [UIView animateWithDuration:[[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue] animations:^{
-        [self.view layoutIfNeeded];
+        [self.gameSearchBar layoutIfNeeded];
     }];
 }
 
 -(void)keyboardWillDismiss: (NSNotification*)notification
 {
-    
+    NSDictionary *info = [notification userInfo];
+    [self.gameSearchBar mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(self.view);
+        make.width.equalTo(self.view.mas_width);
+    }];
+    //NSLog(@"\nAnimation Duration : %@", [info objectForKey:UIKeyboardAnimationDurationUserInfoKey]);
+    [UIView animateWithDuration:[[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue] animations:^{
+        [self.gameSearchBar layoutIfNeeded];
+    }];
 }
 
 @end
