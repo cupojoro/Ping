@@ -108,12 +108,12 @@
 - (MASConstraint *)with;
 
 /**
- *	optional semantic property which has no effect but improves the readability of constraint
+ *	Optional semantic property which has no effect but improves the readability of constraint
  */
 - (MASConstraint *)and;
 
 /**
- *	creates a new MASCompositeConstraint with the called attribute and reciever
+ *	Creates a new MASCompositeConstraint with the called attribute and reciever
  */
 - (MASConstraint *)left;
 - (MASConstraint *)top;
@@ -126,6 +126,27 @@
 - (MASConstraint *)centerX;
 - (MASConstraint *)centerY;
 - (MASConstraint *)baseline;
+
+#if (__IPHONE_OS_VERSION_MIN_REQUIRED >= 80000) || (__TV_OS_VERSION_MIN_REQUIRED >= 9000) || (__MAC_OS_X_VERSION_MIN_REQUIRED >= 101100)
+
+- (MASConstraint *)firstBaseline;
+- (MASConstraint *)lastBaseline;
+
+#endif
+
+#if TARGET_OS_IPHONE || TARGET_OS_TV
+
+- (MASConstraint *)leftMargin;
+- (MASConstraint *)rightMargin;
+- (MASConstraint *)topMargin;
+- (MASConstraint *)bottomMargin;
+- (MASConstraint *)leadingMargin;
+- (MASConstraint *)trailingMargin;
+- (MASConstraint *)centerXWithinMargins;
+- (MASConstraint *)centerYWithinMargins;
+
+#endif
+
 
 /**
  *	Sets the constraint debug name
@@ -164,12 +185,23 @@
 
 // NSLayoutConstraint Installation support
 
-#if TARGET_OS_MAC && !TARGET_OS_IPHONE
+#if TARGET_OS_MAC && !(TARGET_OS_IPHONE || TARGET_OS_TV)
 /**
  *  Whether or not to go through the animator proxy when modifying the constraint
  */
 @property (nonatomic, copy, readonly) MASConstraint *animator;
 #endif
+
+/**
+ *  Activates an NSLayoutConstraint if it's supported by an OS. 
+ *  Invokes install otherwise.
+ */
+- (void)activate;
+
+/**
+ *  Deactivates previously installed/activated NSLayoutConstraint.
+ */
+- (void)deactivate;
 
 /**
  *	Creates a NSLayoutConstraint and adds it to the appropriate view.

@@ -5,10 +5,10 @@
 //  Created by Joseph Ross on 2017-01-07.
 //  Copyright © 2017 Joseph Ross. All rights reserved.
 //
-
 #import "AppDelegate.h"
 
-#import "PGHomeVC.h"
+#import "Firebase.h"
+#import "PGSplashVC.h"
 
 @interface AppDelegate ()
 
@@ -18,16 +18,19 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [FIRApp configure];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-    PGHomeVC *homeVC = [[PGHomeVC alloc] init];
-    UINavigationController* navController = [[UINavigationController alloc] initWithRootViewController:homeVC];
+    PGSplashVC *splashVC = [[PGSplashVC alloc] init];
+    UINavigationController* navController = [[UINavigationController alloc] initWithRootViewController:splashVC];
     
     self.window.rootViewController = navController;
     
+
     return YES;
 }
 

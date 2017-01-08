@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		188BD1671E220E950082B943 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 188BD1661E220E950082B943 /* GoogleService-Info.plist */; };
+		18DF51931E22377C00432568 /* PGSplashVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DF51921E22377C00432568 /* PGSplashVC.m */; };
 		18EBB3261E21BEAC002D7A33 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EBB3251E21BEAC002D7A33 /* main.m */; };
 		18EBB3291E21BEAC002D7A33 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EBB3281E21BEAC002D7A33 /* AppDelegate.m */; };
 		18EBB3311E21BEAC002D7A33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18EBB3301E21BEAC002D7A33 /* Assets.xcassets */; };
@@ -37,6 +39,9 @@
 
 /* Begin PBXFileReference section */
 		0831A8CE3F3DB7672D954032 /* Pods-PingUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PingUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PingUITests/Pods-PingUITests.release.xcconfig"; sourceTree = "<group>"; };
+		188BD1661E220E950082B943 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		18DF51911E22377C00432568 /* PGSplashVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSplashVC.h; sourceTree = "<group>"; };
+		18DF51921E22377C00432568 /* PGSplashVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSplashVC.m; sourceTree = "<group>"; };
 		18EBB3211E21BEAC002D7A33 /* Ping.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ping.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18EBB3251E21BEAC002D7A33 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		18EBB3271E21BEAC002D7A33 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -90,6 +95,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18DF51901E22375900432568 /* SplashView */ = {
+			isa = PBXGroup;
+			children = (
+				18DF51911E22377C00432568 /* PGSplashVC.h */,
+				18DF51921E22377C00432568 /* PGSplashVC.m */,
+			);
+			name = SplashView;
+			sourceTree = "<group>";
+		};
 		18EBB3181E21BEAA002D7A33 = {
 			isa = PBXGroup;
 			children = (
@@ -115,11 +129,13 @@
 		18EBB3231E21BEAC002D7A33 /* Ping */ = {
 			isa = PBXGroup;
 			children = (
+				18DF51901E22375900432568 /* SplashView */,
 				18EBB3581E21C3D4002D7A33 /* HomeView */,
 				18EBB3271E21BEAC002D7A33 /* AppDelegate.h */,
 				18EBB3281E21BEAC002D7A33 /* AppDelegate.m */,
 				18EBB3301E21BEAC002D7A33 /* Assets.xcassets */,
 				18EBB3351E21BEAC002D7A33 /* Info.plist */,
+				188BD1661E220E950082B943 /* GoogleService-Info.plist */,
 				18EBB3241E21BEAC002D7A33 /* Supporting Files */,
 			);
 			path = Ping;
@@ -300,6 +316,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18EBB3311E21BEAC002D7A33 /* Assets.xcassets in Resources */,
+				188BD1671E220E950082B943 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -465,6 +482,7 @@
 				18EBB3291E21BEAC002D7A33 /* AppDelegate.m in Sources */,
 				18EBB36B1E21C5D1002D7A33 /* PGHomeVC.m in Sources */,
 				18EBB3261E21BEAC002D7A33 /* main.m in Sources */,
+				18DF51931E22377C00432568 /* PGSplashVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

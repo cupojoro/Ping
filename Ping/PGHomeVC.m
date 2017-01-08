@@ -8,12 +8,15 @@
 
 #import "PGHomeVC.h"
 #import "Masonry.h"
+#import "Firebase.h"
+#import <FirebaseDatabase/FirebaseDatabase.h>
 
 @interface PGHomeVC () <UIScrollViewDelegate, UISearchBarDelegate>
 
 @property (nonatomic, strong) UIScrollView* featureGameView;
 @property (nonatomic, strong) UIPageControl* fgPageControl;
 @property (nonatomic, strong) UISearchBar* gameSearchBar;
+@property (nonatomic, strong) FIRDatabaseReference *dataRef;
 
 @end
 
@@ -21,13 +24,18 @@
 {
     NSInteger totalFeaturedGames;
     NSInteger maxTextLength;
+    NSString *storageURL;
 }
 
 -(id)init{
     self = [super init];
+    
     if(self){
         totalFeaturedGames = 3;
         maxTextLength = 20;
+        storageURL = @"gs://ping-75955.appspot.com";
+        
+        self.dataRef = [[FIRDatabase database] reference];
         
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(keyboardWillShow:)
@@ -109,6 +117,36 @@
 }
 
 -(void) setFeaturedImages{
+    
+    FIRStorage *storage = [FIRStorage storage];
+    FIRStorageReference *storageRef = [storage referenceForURL:storageURL];
+    NSString *userID = [FIRAuth auth].currentUser.uid;
+    NSLog(@"\nUSER ID : %@", userID);
+    NSLog(@"\nUSER CREATED");
+    
+    [[self.dataRef child:@"featuredImages"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        NSMutableString *tag = [[NSMutableString alloc] initWithString:@"f0URL"];
+        for( int imageNumber = 0; imageNumber <= totalFeaturedGames; imageNumber++){
+            [tag replaceCharactersInRange:NSMakeRange(1, 1) withString:[@(imageNumber) stringValue]];
+            NSURL *url = [NSURL URLWithString:snapshot.value[tag]];
+            NSLog(@"\nURL : %@", url);
+            UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:url]]];
+            imageView.contentMode = UIViewContentModeScaleToFill;
+            imageView.clipsToBounds = YES;
+            imageView.frame = CGRectMake( self.featureGameView.frame.size.width * imageNumber, 0, self.featureGameView.frame.size.width, self.featureGameView.frame.size.height);
+            [self.featureGameView addSubview:imageView];
+        }
+        
+    }];
+    
+    //[[[self.dataRef child:@"featuredImages"] child:userID] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+    //    NSURL *url = [NSURL URLWithString:snapshot.value[@"f1URL" ]];
+    //    NSLog(@"\n F! URL : %@", url);
+    //} withCancelBlock:^(NSError * _Nonnull error) {
+    //    NSLog(@"\n HERE WE ARE!!!!! %@", error.localizedDescription);
+    //}];
+    
+    /*
     NSArray* imageNames = @[@"FFXV", @"RE7", @"SAO"];
     for ( int imageNumber = 0; imageNumber < totalFeaturedGames; imageNumber++){
         NSString *imageName = imageNames[imageNumber];
@@ -118,6 +156,7 @@
         imageView.frame = CGRectMake( self.featureGameView.frame.size.width * imageNumber, 0, self.featureGameView.frame.size.width, self.featureGameView.frame.size.height);
         [self.featureGameView addSubview:imageView];
     }
+    */
 }
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     CGFloat pageWidth = self.featureGameView.frame.size.width;
