@@ -9,7 +9,7 @@
 #import "PGHomeVC.h"
 #import "Masonry.h"
 
-@interface PGHomeVC () <UIScrollViewDelegate>
+@interface PGHomeVC () <UIScrollViewDelegate, UISearchBarDelegate>
 
 @property (nonatomic, strong) UIScrollView* featureGameView;
 @property (nonatomic, strong) UIPageControl* fgPageControl;
@@ -20,12 +20,14 @@
 @implementation PGHomeVC
 {
     NSInteger totalFeaturedGames;
+    NSInteger maxTextLength;
 }
 
 -(id)init{
     self = [super init];
     if(self){
         totalFeaturedGames = 3;
+        maxTextLength = 20;
         
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(keyboardWillShow:)
@@ -59,6 +61,7 @@
     self.fgPageControl.pageIndicatorTintColor = [UIColor darkGrayColor];
     
     self.gameSearchBar = [[UISearchBar alloc] init];
+    self.gameSearchBar.delegate = self;
     [self.gameSearchBar setPlaceholder:@"Search For Game Maps"];
     self.gameSearchBar.barStyle = UISearchBarStyleMinimal;
     self.gameSearchBar.translucent = YES;
@@ -123,16 +126,10 @@
     self.fgPageControl.currentPage = page;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 -(void)keyboardWillShow: (NSNotification*)notification
 {
     NSDictionary *info = [notification userInfo];
     CGSize kbSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
-    NSLog(@"\nKB SIZE: %f", kbSize.height);
     [self.gameSearchBar mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(self.view.mas_bottom).with.offset(0-kbSize.height);
         make.centerX.equalTo(self.view.mas_centerX);
@@ -157,4 +154,15 @@
     }];
 }
 
+- (void) searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    searchText = ([searchText length] > maxTextLength) ? [searchText substringToIndex:maxTextLength] : searchText;
+    [searchBar setText:searchText];
+    
+}
+-(void) searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    NSLog(@"\nSEARCHED TEXT : %@", searchBar.text);
+    [self.view endEditing:YES];
+}
 @end
