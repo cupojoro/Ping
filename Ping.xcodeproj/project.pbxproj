@@ -10,11 +10,13 @@
 		18EBB3261E21BEAC002D7A33 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EBB3251E21BEAC002D7A33 /* main.m */; };
 		18EBB3291E21BEAC002D7A33 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EBB3281E21BEAC002D7A33 /* AppDelegate.m */; };
 		18EBB32C1E21BEAC002D7A33 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EBB32B1E21BEAC002D7A33 /* ViewController.m */; };
-		18EBB32F1E21BEAC002D7A33 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18EBB32D1E21BEAC002D7A33 /* Main.storyboard */; };
 		18EBB3311E21BEAC002D7A33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18EBB3301E21BEAC002D7A33 /* Assets.xcassets */; };
-		18EBB3341E21BEAC002D7A33 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18EBB3321E21BEAC002D7A33 /* LaunchScreen.storyboard */; };
 		18EBB33F1E21BEAC002D7A33 /* PingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EBB33E1E21BEAC002D7A33 /* PingTests.m */; };
 		18EBB34A1E21BEAC002D7A33 /* PingUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EBB3491E21BEAC002D7A33 /* PingUITests.m */; };
+		18EBB36B1E21C5D1002D7A33 /* PGHomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EBB36A1E21C5D1002D7A33 /* PGHomeVC.m */; };
+		7AFC16890E2FC55B004CB77D /* libPods-PingTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E247D983B273FB0BFB1A26 /* libPods-PingTests.a */; };
+		E2669D833991D9A81F42C06F /* libPods-Ping.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA3FBED712B2CB70B961BAB1 /* libPods-Ping.a */; };
+		EF985685E8A91AA47E02EEBA /* libPods-PingUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 469661060AB955EE956644E3 /* libPods-PingUITests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,15 +37,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0831A8CE3F3DB7672D954032 /* Pods-PingUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PingUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PingUITests/Pods-PingUITests.release.xcconfig"; sourceTree = "<group>"; };
 		18EBB3211E21BEAC002D7A33 /* Ping.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ping.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18EBB3251E21BEAC002D7A33 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		18EBB3271E21BEAC002D7A33 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		18EBB3281E21BEAC002D7A33 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		18EBB32A1E21BEAC002D7A33 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		18EBB32B1E21BEAC002D7A33 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		18EBB32E1E21BEAC002D7A33 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		18EBB3301E21BEAC002D7A33 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		18EBB3331E21BEAC002D7A33 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18EBB3351E21BEAC002D7A33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18EBB33A1E21BEAC002D7A33 /* PingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		18EBB33E1E21BEAC002D7A33 /* PingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PingTests.m; sourceTree = "<group>"; };
@@ -51,6 +52,17 @@
 		18EBB3451E21BEAC002D7A33 /* PingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		18EBB3491E21BEAC002D7A33 /* PingUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PingUITests.m; sourceTree = "<group>"; };
 		18EBB34B1E21BEAC002D7A33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18EBB3571E21C064002D7A33 /* Ping-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Ping-Prefix.pch"; sourceTree = "<group>"; };
+		18EBB3691E21C5D1002D7A33 /* PGHomeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGHomeVC.h; sourceTree = "<group>"; };
+		18EBB36A1E21C5D1002D7A33 /* PGHomeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGHomeVC.m; sourceTree = "<group>"; };
+		452EC4A6826B806213E8F6D0 /* Pods-PingUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PingUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PingUITests/Pods-PingUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		469661060AB955EE956644E3 /* libPods-PingUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PingUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		50E247D983B273FB0BFB1A26 /* libPods-PingTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PingTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C2E11FD8576D2CC998464CD /* Pods-PingTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PingTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PingTests/Pods-PingTests.release.xcconfig"; sourceTree = "<group>"; };
+		B8B4DCC350B147DAD685EC43 /* Pods-Ping.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ping.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ping/Pods-Ping.release.xcconfig"; sourceTree = "<group>"; };
+		BE9AEB3AB9217EA247233C27 /* Pods-Ping.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ping.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Ping/Pods-Ping.debug.xcconfig"; sourceTree = "<group>"; };
+		DA3FBED712B2CB70B961BAB1 /* libPods-Ping.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Ping.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F6083D95663AA19C484238C6 /* Pods-PingTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PingTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PingTests/Pods-PingTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2669D833991D9A81F42C06F /* libPods-Ping.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7AFC16890E2FC55B004CB77D /* libPods-PingTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF985685E8A91AA47E02EEBA /* libPods-PingUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +100,8 @@
 				18EBB33D1E21BEAC002D7A33 /* PingTests */,
 				18EBB3481E21BEAC002D7A33 /* PingUITests */,
 				18EBB3221E21BEAC002D7A33 /* Products */,
+				54EC1E1377A56457B211247C /* Pods */,
+				74FD829DEF77BA3068967190 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,13 +118,12 @@
 		18EBB3231E21BEAC002D7A33 /* Ping */ = {
 			isa = PBXGroup;
 			children = (
+				18EBB3581E21C3D4002D7A33 /* HomeView */,
 				18EBB3271E21BEAC002D7A33 /* AppDelegate.h */,
 				18EBB3281E21BEAC002D7A33 /* AppDelegate.m */,
 				18EBB32A1E21BEAC002D7A33 /* ViewController.h */,
 				18EBB32B1E21BEAC002D7A33 /* ViewController.m */,
-				18EBB32D1E21BEAC002D7A33 /* Main.storyboard */,
 				18EBB3301E21BEAC002D7A33 /* Assets.xcassets */,
-				18EBB3321E21BEAC002D7A33 /* LaunchScreen.storyboard */,
 				18EBB3351E21BEAC002D7A33 /* Info.plist */,
 				18EBB3241E21BEAC002D7A33 /* Supporting Files */,
 			);
@@ -118,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				18EBB3251E21BEAC002D7A33 /* main.m */,
+				18EBB3571E21C064002D7A33 /* Ping-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -140,6 +157,38 @@
 			path = PingUITests;
 			sourceTree = "<group>";
 		};
+		18EBB3581E21C3D4002D7A33 /* HomeView */ = {
+			isa = PBXGroup;
+			children = (
+				18EBB3691E21C5D1002D7A33 /* PGHomeVC.h */,
+				18EBB36A1E21C5D1002D7A33 /* PGHomeVC.m */,
+			);
+			name = HomeView;
+			sourceTree = "<group>";
+		};
+		54EC1E1377A56457B211247C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BE9AEB3AB9217EA247233C27 /* Pods-Ping.debug.xcconfig */,
+				B8B4DCC350B147DAD685EC43 /* Pods-Ping.release.xcconfig */,
+				F6083D95663AA19C484238C6 /* Pods-PingTests.debug.xcconfig */,
+				5C2E11FD8576D2CC998464CD /* Pods-PingTests.release.xcconfig */,
+				452EC4A6826B806213E8F6D0 /* Pods-PingUITests.debug.xcconfig */,
+				0831A8CE3F3DB7672D954032 /* Pods-PingUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		74FD829DEF77BA3068967190 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DA3FBED712B2CB70B961BAB1 /* libPods-Ping.a */,
+				50E247D983B273FB0BFB1A26 /* libPods-PingTests.a */,
+				469661060AB955EE956644E3 /* libPods-PingUITests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -147,9 +196,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 18EBB34E1E21BEAC002D7A33 /* Build configuration list for PBXNativeTarget "Ping" */;
 			buildPhases = (
+				58CA558C7776D9681BCBC657 /* [CP] Check Pods Manifest.lock */,
 				18EBB31D1E21BEAB002D7A33 /* Sources */,
 				18EBB31E1E21BEAB002D7A33 /* Frameworks */,
 				18EBB31F1E21BEAB002D7A33 /* Resources */,
+				BBCAC2BA5F6FAA9AE54BCAD4 /* [CP] Embed Pods Frameworks */,
+				E15AD4D0A522B9C4F1439A69 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -164,9 +216,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 18EBB3511E21BEAC002D7A33 /* Build configuration list for PBXNativeTarget "PingTests" */;
 			buildPhases = (
+				398899DC6740F52D3F83A2FA /* [CP] Check Pods Manifest.lock */,
 				18EBB3361E21BEAC002D7A33 /* Sources */,
 				18EBB3371E21BEAC002D7A33 /* Frameworks */,
 				18EBB3381E21BEAC002D7A33 /* Resources */,
+				17064376F365B2EE8F8B607E /* [CP] Embed Pods Frameworks */,
+				AC139A132377573C7EB7B164 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -182,9 +237,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 18EBB3541E21BEAC002D7A33 /* Build configuration list for PBXNativeTarget "PingUITests" */;
 			buildPhases = (
+				44368D5785E3D7426DE139D8 /* [CP] Check Pods Manifest.lock */,
 				18EBB3411E21BEAC002D7A33 /* Sources */,
 				18EBB3421E21BEAC002D7A33 /* Frameworks */,
 				18EBB3431E21BEAC002D7A33 /* Resources */,
+				438EFD9BE1C9CDB7EEC0454A /* [CP] Embed Pods Frameworks */,
+				C916D15D7506460D4EC503F7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -246,9 +304,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18EBB3341E21BEAC002D7A33 /* LaunchScreen.storyboard in Resources */,
 				18EBB3311E21BEAC002D7A33 /* Assets.xcassets in Resources */,
-				18EBB32F1E21BEAC002D7A33 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,6 +324,144 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		17064376F365B2EE8F8B607E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PingTests/Pods-PingTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		398899DC6740F52D3F83A2FA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		438EFD9BE1C9CDB7EEC0454A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PingUITests/Pods-PingUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		44368D5785E3D7426DE139D8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		58CA558C7776D9681BCBC657 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		AC139A132377573C7EB7B164 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PingTests/Pods-PingTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BBCAC2BA5F6FAA9AE54BCAD4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Ping/Pods-Ping-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C916D15D7506460D4EC503F7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PingUITests/Pods-PingUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E15AD4D0A522B9C4F1439A69 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Ping/Pods-Ping-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		18EBB31D1E21BEAB002D7A33 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -275,6 +469,7 @@
 			files = (
 				18EBB32C1E21BEAC002D7A33 /* ViewController.m in Sources */,
 				18EBB3291E21BEAC002D7A33 /* AppDelegate.m in Sources */,
+				18EBB36B1E21C5D1002D7A33 /* PGHomeVC.m in Sources */,
 				18EBB3261E21BEAC002D7A33 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -309,25 +504,6 @@
 			targetProxy = 18EBB3461E21BEAC002D7A33 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		18EBB32D1E21BEAC002D7A33 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				18EBB32E1E21BEAC002D7A33 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		18EBB3321E21BEAC002D7A33 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				18EBB3331E21BEAC002D7A33 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		18EBB34C1E21BEAC002D7A33 /* Debug */ = {
@@ -422,8 +598,11 @@
 		};
 		18EBB34F1E21BEAC002D7A33 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BE9AEB3AB9217EA247233C27 /* Pods-Ping.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$SRCROOT/$PROJECT_NAME/Ping-Prefix.pch";
 				INFOPLIST_FILE = Ping/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = JR.Ping;
@@ -433,8 +612,11 @@
 		};
 		18EBB3501E21BEAC002D7A33 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8B4DCC350B147DAD685EC43 /* Pods-Ping.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$SRCROOT/$PROJECT_NAME/Ping-Prefix.pch";
 				INFOPLIST_FILE = Ping/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = JR.Ping;
@@ -444,6 +626,7 @@
 		};
 		18EBB3521E21BEAC002D7A33 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F6083D95663AA19C484238C6 /* Pods-PingTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = PingTests/Info.plist;
@@ -456,6 +639,7 @@
 		};
 		18EBB3531E21BEAC002D7A33 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5C2E11FD8576D2CC998464CD /* Pods-PingTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = PingTests/Info.plist;
@@ -468,6 +652,7 @@
 		};
 		18EBB3551E21BEAC002D7A33 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 452EC4A6826B806213E8F6D0 /* Pods-PingUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = PingUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -479,6 +664,7 @@
 		};
 		18EBB3561E21BEAC002D7A33 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0831A8CE3F3DB7672D954032 /* Pods-PingUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = PingUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -507,6 +693,7 @@
 				18EBB3501E21BEAC002D7A33 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		18EBB3511E21BEAC002D7A33 /* Build configuration list for PBXNativeTarget "PingTests" */ = {
 			isa = XCConfigurationList;
@@ -515,6 +702,7 @@
 				18EBB3531E21BEAC002D7A33 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		18EBB3541E21BEAC002D7A33 /* Build configuration list for PBXNativeTarget "PingUITests" */ = {
 			isa = XCConfigurationList;
@@ -523,6 +711,7 @@
 				18EBB3561E21BEAC002D7A33 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
