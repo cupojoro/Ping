@@ -7,6 +7,7 @@
 //
 
 #import "PGGamePageVC.h"
+#import "PGMapInterfaceVC.h"
 
 #import "Masonry.h"
 #import "Firebase.h"
@@ -122,7 +123,8 @@ NSMutableArray *mapNames;
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    PGMapInterfaceVC *mapInterface = [[PGMapInterfaceVC alloc] initWithURL:[NSURL URLWithString:@"http"] andGrid:[[NSMutableArray alloc] init]];
+    [[self navigationController] pushViewController:mapInterface animated:NO];
 }
 
 

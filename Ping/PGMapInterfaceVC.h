@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface PGMapInterfaceVC : UIViewController
-
+-(id)initWithURL: (NSURL *)url andGrid: (NSMutableArray *)gData;
 @end
