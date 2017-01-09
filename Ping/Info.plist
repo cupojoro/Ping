@@ -26,6 +26,8 @@
 	</array>
 	<key>UIStatusBarHidden~ipad</key>
 	<true/>
+	<key>FirebaseAutomaticScreenReportingEnabled</key>
+	<false/>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>UISupportedInterfaceOrientations~ipad</key>
