@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PGMapInterfaceVC : UIViewController
+@interface PGMapInterfaceVC : UIViewController 
 -(id)initWithURL: (NSURL *)url andGrid: (NSMutableArray *)gData;
+-(void)updateIconColor:(id)sender;
+-(void)updateFilter;
+-(void)updateStatusMode:(id)sender;
+-(void)gridButtonSwitch;
+-(void)updateGeoID:(id)sender;
+
+-(UIColor *)getTintColor;
+-(NSInteger)getGeoID;
+
 @end

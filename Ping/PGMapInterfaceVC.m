@@ -7,40 +7,53 @@
 //
 
 #import "PGMapInterfaceVC.h"
+#import "PGGridCell.h"
+#import "PGFilterView.h"
+#import "PGMapView.h"
+#import "PGToolbarView.h"
 
 #import "Masonry.h"
 #import "Firebase.h"
 
-@interface PGMapInterfaceVC () <UIScrollViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
+@interface PGMapInterfaceVC () 
 
-@property (nonatomic, strong) UIScrollView *contentWindow;
-@property (nonatomic, strong) UIView *imageModule;
-@property (nonatomic, strong) UICollectionView *gridView;
-@property (nonatomic, strong) UIImageView *mapImage;
-@property (nonatomic, strong) UIView *toolbarView;
-@property (nonatomic, strong) UIButton *gridButton;
-@property (nonatomic, strong) UIButton *keyButton;
-@property (nonatomic, strong) UIButton *crownButton;
-@property (nonatomic, strong) UIButton *moneyButton;
+
+@property (nonatomic, strong) UILabel *contributorLabel;
+@property (nonatomic, strong) UIView *greyoutView;
+
+@property (nonatomic, strong) PGFilterView *filterView;
+@property (nonatomic, strong) PGMapView *mapView;
+@property (nonatomic, strong) PGToolbarView *toolbarView;
 
 @end
 
 @implementation PGMapInterfaceVC
 
+typedef enum
+{
+    ViewMode = 1,
+    VoteMode = 2,
+    EditMode = 3
+} StatusModes;
+
 NSURL *mapImageURL;
 NSMutableArray *gridData;
-NSInteger axisSize;
-BOOL gridNotHidden;
+BOOL gridNotHidden = NO;
+NSInteger geoID = 0;
+int toolbarHeight = 85;
+int toolbarSectionHeight = 15;
+UIColor *iconColor;
+StatusModes status;
+int viewFlag;
+
 
 -(id)initWithURL: (NSURL *)url andGrid: (NSMutableArray *)gData
 {
     self = [super init];
     if(self){
         mapImageURL = url;
-        gridData = gData;
-        axisSize = 30;
-        gridNotHidden = YES;
-        
+        iconColor = [UIColor blackColor];
+        status = EditMode;
     }
     return self;
 }
@@ -48,115 +61,141 @@ BOOL gridNotHidden;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    //SETUP NAVIGATION BAR
+    
+    [self.navigationItem setTitle:@"Contributors: 25"];
+    UIBarButtonItem *filterButton = [[UIBarButtonItem alloc] initWithTitle:@"Filter" style:UIBarButtonItemStylePlain target:self action:@selector(openFilterMenu)];
+    self.navigationItem.rightBarButtonItem = filterButton;
+    
+    //FILTER MENU
+    
+    self.filterView = [[PGFilterView alloc] initWithMapInterface:self];
+    self.filterView.hidden = YES;
+    [self.filterView setBackgroundColor:[UIColor lightGrayColor]];
+    [self.view addSubview:self.filterView];
+    
+    self.greyoutView = [[UIView alloc] init];
+    self.greyoutView.hidden = YES;
+    [self.greyoutView setBackgroundColor:[UIColor colorWithRed:0.169 green:0.169 blue:0.169 alpha:0.65]];
+    [self.view addSubview:self.greyoutView];
+    
     //TOOLBAR
-    self.toolbarView = [[UIView alloc] init];
-    self.toolbarView.backgroundColor = [UIColor grayColor];
     
-    self.gridButton = [[UIButton alloc] init];
-    [self.gridButton setImage:[UIImage imageNamed:@"grid"] forState:UIControlStateNormal];
-    [self.gridButton addTarget:self action:@selector(gridButtonSwitch) forControlEvents:UIControlEventTouchUpInside];
+    self.toolbarView = [[PGToolbarView alloc] initWithToolbarHeight:toolbarHeight toolBarSectionHeight:toolbarSectionHeight mapInterface:self];
+    [self.view addSubview:self.toolbarView];
     
-    [self.toolbarView addSubview:self.gridButton];
+    //MAP VIEW
     
-    //MAP CONTENT
-    self.mapImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ffxvDuscae"]];
-    [self.mapImage setFrame:self.view.frame];
-    
-    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    [layout setMinimumLineSpacing:0];
-    [layout setMinimumInteritemSpacing:0];
-    [layout setItemSize:CGSizeMake(self.view.frame.size.width/axisSize, self.view.frame.size.height/axisSize)];
-    self.gridView = [[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:layout];
-    self.gridView.backgroundColor = [UIColor clearColor];
-    self.gridView.userInteractionEnabled = YES;
-    [self.gridView setDelegate:self];
-    [self.gridView setDataSource:self];
-    [self.gridView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cellIdentifier"];
-    
-    self.imageModule = [[UIView alloc] initWithFrame:self.view.frame];
-    [self.imageModule addSubview:self.mapImage];
-    [self.imageModule addSubview:self.gridView];
-    
-    self.contentWindow = [[UIScrollView alloc] initWithFrame:self.view.frame];
-    self.contentWindow.delegate = self;
-    self.contentWindow.contentSize = self.view.frame.size;
-    [self.contentWindow setScrollEnabled:YES];
-    self.contentWindow.bounces = NO;
-    self.contentWindow.bouncesZoom = NO;
-    [self.contentWindow setMinimumZoomScale:1.0];
-    [self.contentWindow setMaximumZoomScale:10.0];
-    self.contentWindow.userInteractionEnabled = YES;
+    CGRect frame = self.view.frame;
+    frame.size.height -= toolbarHeight;
+    self.mapView = [[PGMapView alloc] initWithFrame:frame mapInterface:self];
+    [self.view addSubview:self.mapView];
     
     [self.view addSubview:self.toolbarView];
-    [self.view addSubview:self.contentWindow];
-    [self.contentWindow addSubview:self.imageModule];
     [self.view bringSubviewToFront:self.toolbarView];
+    [self.view bringSubviewToFront:self.filterView];
+    [self.view bringSubviewToFront:self.greyoutView];
     
     [self applyMASConstraints];
 }
 
 -(void) applyMASConstraints
 {
-    [self.contentWindow mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.equalTo(self.view);
-        make.center.equalTo(self.view);
+    [self.greyoutView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(self.view);
+        make.height.equalTo(self.view.mas_height).dividedBy(2);
+        make.bottom.equalTo(self.view.mas_bottom);
+        make.left.equalTo(self.view.mas_left);
+    }];
+    
+    [self.filterView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(self.view.mas_width);
+        make.height.equalTo(self.view.mas_height).dividedBy(2);
+        make.top.equalTo(self.view.mas_top);
+        make.left.equalTo(self.view.mas_left);
+    }];
+    
+    [self.mapView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(self.view.mas_width);
+        make.bottom.equalTo(self.toolbarView.mas_top);
+        make.height.equalTo(self.view.mas_height).with.offset(toolbarHeight);
+        make.left.equalTo(self.view.mas_left);
     }];
     
     [self.toolbarView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.equalTo(@75);
+        make.height.equalTo([NSNumber numberWithInteger:toolbarHeight]);
         make.width.equalTo(self.view.mas_width);
+        make.left.equalTo(self.view.mas_left);
         make.bottom.equalTo(self.view.mas_bottom);
-        make.centerX.equalTo(self.view.mas_centerX);
-    }];
-    
-    [self.gridButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.equalTo(self.toolbarView.mas_height);
-        make.left.equalTo(self.toolbarView.mas_left);
-        make.centerY.equalTo(self.toolbarView.mas_centerY);
     }];
     
 }
-
 
 -(void)gridButtonSwitch
 {
-    NSLog(@"BUTTON CLICKED");
-    gridNotHidden = !gridNotHidden;
-    [self.gridView reloadData];
+    [self.mapView gridSwitch];
 }
 
-
--(UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
+-(NSInteger)getGeoID
 {
-    return self.imageModule;
+    return geoID;
 }
 
--(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+-(UIColor *)getTintColor
 {
-    return axisSize*axisSize;
+    return iconColor;
 }
--(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath
+
+-(void)updateFilter
 {
-    
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cellIdentifier" forIndexPath:indexPath];
-    if(gridNotHidden){
-        cell.layer.borderWidth = 1;
-        cell.layer.borderColor = [UIColor lightGrayColor].CGColor;
-        cell.backgroundColor = [UIColor clearColor];
-    }else{
-        cell.layer.borderWidth = 0;
-        cell.backgroundColor = [UIColor clearColor];
+    [self.mapView setUserInteractionEnabled: YES];
+    [self.toolbarView setUserInteractionEnabled:YES];
+    self.filterView.hidden = YES;
+    self.greyoutView.hidden = YES;
+    [self.mapView reloadGrid];
+}
+
+-(void)updateIconColor: (id) sender
+{
+    UIButton *button  = (UIButton *) sender;
+    if(button.tag == 1) iconColor = [UIColor blackColor];
+    else if(button.tag == 2) iconColor = [UIColor redColor];
+    else if(button.tag == 3) iconColor = [UIColor whiteColor];
+}
+
+-(void)openFilterMenu
+{
+    NSLog(@"OPENING FILTER MENU");
+    [self.mapView setUserInteractionEnabled:NO];
+    [self.toolbarView setUserInteractionEnabled:NO];
+    self.filterView.hidden = NO;
+    self.greyoutView.hidden = NO;
+}
+
+-(void)updateStatusMode: (id) sender
+{
+    UIButton *button = (UIButton *)sender;
+    status = (StatusModes) button.tag;
+}
+
+-(void)updateGeoID : (id) sender
+{
+    [self.toolbarView clearButtonHighlights];
+    UIButton *button = (UIButton *) sender;
+    if(geoID == button.tag){
+        geoID = 0;
+        button.backgroundColor = [UIColor clearColor];
     }
-    return cell;
+    else{
+        geoID = button.tag;
+        button.backgroundColor = [UIColor yellowColor];
+    }
+    
+    
 }
 
--(CGSize)collectionView:(UICollectionView *)collectionView layout:(nonnull UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(nonnull NSIndexPath *)indexPath
-{
-    
-    return CGSizeMake(self.view.frame.size.width/axisSize, self.view.frame.size.height/axisSize);
-}
--(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSLog(@"CELL %ld",indexPath.row);
-}
+
+
+
+
 @end
