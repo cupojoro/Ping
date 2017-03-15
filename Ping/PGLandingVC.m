@@ -140,7 +140,6 @@
         [self.view addSubview:self.braceLeft];
         [self.view addSubview:self.braceRight];
         
-        
         self.statusLabel.hidden = YES;
         self.statusView.hidden = YES;
     }
