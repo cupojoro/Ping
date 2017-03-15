@@ -7,14 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		180B23D21E3EB4360028D05B /* PGAdminControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 180B23D11E3EB4360028D05B /* PGAdminControlView.m */; };
+		181964481E34152F0051CA4D /* PGLandingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 181964471E34152F0051CA4D /* PGLandingVC.m */; };
+		1819644A1E34185A0051CA4D /* Data.plist in Resources */ = {isa = PBXBuildFile; fileRef = 181964491E34185A0051CA4D /* Data.plist */; };
+		1819644D1E345CE10051CA4D /* PGGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1819644C1E345CE10051CA4D /* PGGradientView.m */; };
+		18453E1D1E260FEB004A3944 /* PGMapInterfaceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DF519F1E23631800432568 /* PGMapInterfaceVC.m */; };
+		186FABC31E541B0C004C22D8 /* PGGamePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 186FABC21E541B0C004C22D8 /* PGGamePageViewController.m */; };
+		186FABC61E541B20004C22D8 /* PGGameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 186FABC51E541B20004C22D8 /* PGGameView.m */; };
+		186FABCA1E542976004C22D8 /* PGMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 186FABC91E542976004C22D8 /* PGMapViewController.m */; };
+		186FABCD1E54299E004C22D8 /* PGMapModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 186FABCC1E54299E004C22D8 /* PGMapModel.m */; };
+		186FABD01E5429D1004C22D8 /* PGMapInteraceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 186FABCF1E5429D1004C22D8 /* PGMapInteraceView.m */; };
+		186FABD31E5429DF004C22D8 /* PGMapToolbarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 186FABD21E5429DF004C22D8 /* PGMapToolbarView.m */; };
+		186FABD61E57D69A004C22D8 /* PGTagEditView.m in Sources */ = {isa = PBXBuildFile; fileRef = 186FABD51E57D69A004C22D8 /* PGTagEditView.m */; };
+		186FABD91E593F13004C22D8 /* PGTagHolderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 186FABD81E593F13004C22D8 /* PGTagHolderView.m */; };
+		186FABDC1E676D6A004C22D8 /* PGMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 186FABDB1E676D6A004C22D8 /* PGMenuView.m */; };
 		188BD1671E220E950082B943 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 188BD1661E220E950082B943 /* GoogleService-Info.plist */; };
 		189E106C1E25FB2A00A02FF1 /* PGFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 189E106B1E25FB2A00A02FF1 /* PGFilterView.m */; };
 		189E106F1E25FDD200A02FF1 /* PGMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 189E106E1E25FDD200A02FF1 /* PGMapView.m */; };
 		189E10721E26048B00A02FF1 /* PGToolbarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 189E10711E26048B00A02FF1 /* PGToolbarView.m */; };
+		18B6EE461E46752A00083218 /* PGLandingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B6EE451E46752A00083218 /* PGLandingViewController.m */; };
+		18B6EE491E4675D400083218 /* PGLandingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B6EE481E4675D400083218 /* PGLandingModel.m */; };
+		18B6EE4C1E46864F00083218 /* PGLandingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B6EE4B1E46864F00083218 /* PGLandingView.m */; };
+		18B6EE501E4686F600083218 /* PGErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B6EE4F1E4686F600083218 /* PGErrorView.m */; };
 		18DF51931E22377C00432568 /* PGSplashVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DF51921E22377C00432568 /* PGSplashVC.m */; };
 		18DF51971E22ED8A00432568 /* PGSearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DF51961E22ED8A00432568 /* PGSearchCell.m */; };
 		18DF519B1E23164100432568 /* PGGamePageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DF519A1E23164100432568 /* PGGamePageVC.m */; };
-		18DF51A01E23631800432568 /* PGMapInterfaceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DF519F1E23631800432568 /* PGMapInterfaceVC.m */; };
 		18DF51A31E239A8000432568 /* PGGridCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DF51A21E239A8000432568 /* PGGridCell.m */; };
 		18EBB3261E21BEAC002D7A33 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EBB3251E21BEAC002D7A33 /* main.m */; };
 		18EBB3291E21BEAC002D7A33 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EBB3281E21BEAC002D7A33 /* AppDelegate.m */; };
@@ -22,6 +39,9 @@
 		18EBB33F1E21BEAC002D7A33 /* PingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EBB33E1E21BEAC002D7A33 /* PingTests.m */; };
 		18EBB34A1E21BEAC002D7A33 /* PingUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EBB3491E21BEAC002D7A33 /* PingUITests.m */; };
 		18EBB36B1E21C5D1002D7A33 /* PGHomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EBB36A1E21C5D1002D7A33 /* PGHomeVC.m */; };
+		18FB8F571E46AE67000D1CB9 /* PGHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FB8F561E46AE67000D1CB9 /* PGHomeViewController.m */; };
+		18FB8F5B1E46AFFE000D1CB9 /* PGHomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FB8F5A1E46AFFE000D1CB9 /* PGHomeView.m */; };
+		18FB8F5E1E46B010000D1CB9 /* PGHomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FB8F5D1E46B010000D1CB9 /* PGHomeModel.m */; };
 		7AFC16890E2FC55B004CB77D /* libPods-PingTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E247D983B273FB0BFB1A26 /* libPods-PingTests.a */; };
 		E2669D833991D9A81F42C06F /* libPods-Ping.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA3FBED712B2CB70B961BAB1 /* libPods-Ping.a */; };
 		EF985685E8A91AA47E02EEBA /* libPods-PingUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 469661060AB955EE956644E3 /* libPods-PingUITests.a */; };
@@ -46,6 +66,31 @@
 
 /* Begin PBXFileReference section */
 		0831A8CE3F3DB7672D954032 /* Pods-PingUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PingUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PingUITests/Pods-PingUITests.release.xcconfig"; sourceTree = "<group>"; };
+		180B23D01E3EB4360028D05B /* PGAdminControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGAdminControlView.h; sourceTree = "<group>"; };
+		180B23D11E3EB4360028D05B /* PGAdminControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGAdminControlView.m; sourceTree = "<group>"; };
+		181964461E34152F0051CA4D /* PGLandingVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGLandingVC.h; sourceTree = "<group>"; };
+		181964471E34152F0051CA4D /* PGLandingVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGLandingVC.m; sourceTree = "<group>"; };
+		181964491E34185A0051CA4D /* Data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Data.plist; sourceTree = "<group>"; };
+		1819644B1E345CE10051CA4D /* PGGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGGradientView.h; sourceTree = "<group>"; };
+		1819644C1E345CE10051CA4D /* PGGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGGradientView.m; sourceTree = "<group>"; };
+		186FABC11E541B0C004C22D8 /* PGGamePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGGamePageViewController.h; sourceTree = "<group>"; };
+		186FABC21E541B0C004C22D8 /* PGGamePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGGamePageViewController.m; sourceTree = "<group>"; };
+		186FABC41E541B20004C22D8 /* PGGameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGGameView.h; sourceTree = "<group>"; };
+		186FABC51E541B20004C22D8 /* PGGameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGGameView.m; sourceTree = "<group>"; };
+		186FABC81E542976004C22D8 /* PGMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGMapViewController.h; sourceTree = "<group>"; };
+		186FABC91E542976004C22D8 /* PGMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGMapViewController.m; sourceTree = "<group>"; };
+		186FABCB1E54299E004C22D8 /* PGMapModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGMapModel.h; sourceTree = "<group>"; };
+		186FABCC1E54299E004C22D8 /* PGMapModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGMapModel.m; sourceTree = "<group>"; };
+		186FABCE1E5429D1004C22D8 /* PGMapInteraceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGMapInteraceView.h; sourceTree = "<group>"; };
+		186FABCF1E5429D1004C22D8 /* PGMapInteraceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGMapInteraceView.m; sourceTree = "<group>"; };
+		186FABD11E5429DF004C22D8 /* PGMapToolbarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGMapToolbarView.h; sourceTree = "<group>"; };
+		186FABD21E5429DF004C22D8 /* PGMapToolbarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGMapToolbarView.m; sourceTree = "<group>"; };
+		186FABD41E57D69A004C22D8 /* PGTagEditView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGTagEditView.h; sourceTree = "<group>"; };
+		186FABD51E57D69A004C22D8 /* PGTagEditView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGTagEditView.m; sourceTree = "<group>"; };
+		186FABD71E593F13004C22D8 /* PGTagHolderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGTagHolderView.h; sourceTree = "<group>"; };
+		186FABD81E593F13004C22D8 /* PGTagHolderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGTagHolderView.m; sourceTree = "<group>"; };
+		186FABDA1E676D6A004C22D8 /* PGMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGMenuView.h; sourceTree = "<group>"; };
+		186FABDB1E676D6A004C22D8 /* PGMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGMenuView.m; sourceTree = "<group>"; };
 		188BD1661E220E950082B943 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		189E106A1E25FB2A00A02FF1 /* PGFilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGFilterView.h; sourceTree = "<group>"; };
 		189E106B1E25FB2A00A02FF1 /* PGFilterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGFilterView.m; sourceTree = "<group>"; };
@@ -53,6 +98,14 @@
 		189E106E1E25FDD200A02FF1 /* PGMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGMapView.m; sourceTree = "<group>"; };
 		189E10701E26048B00A02FF1 /* PGToolbarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGToolbarView.h; sourceTree = "<group>"; };
 		189E10711E26048B00A02FF1 /* PGToolbarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGToolbarView.m; sourceTree = "<group>"; };
+		18B6EE441E46752A00083218 /* PGLandingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGLandingViewController.h; sourceTree = "<group>"; };
+		18B6EE451E46752A00083218 /* PGLandingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGLandingViewController.m; sourceTree = "<group>"; };
+		18B6EE471E4675D400083218 /* PGLandingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGLandingModel.h; sourceTree = "<group>"; };
+		18B6EE481E4675D400083218 /* PGLandingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGLandingModel.m; sourceTree = "<group>"; };
+		18B6EE4A1E46864F00083218 /* PGLandingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGLandingView.h; sourceTree = "<group>"; };
+		18B6EE4B1E46864F00083218 /* PGLandingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGLandingView.m; sourceTree = "<group>"; };
+		18B6EE4E1E4686F600083218 /* PGErrorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGErrorView.h; sourceTree = "<group>"; };
+		18B6EE4F1E4686F600083218 /* PGErrorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGErrorView.m; sourceTree = "<group>"; };
 		18DF51911E22377C00432568 /* PGSplashVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSplashVC.h; sourceTree = "<group>"; };
 		18DF51921E22377C00432568 /* PGSplashVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSplashVC.m; sourceTree = "<group>"; };
 		18DF51951E22ED8A00432568 /* PGSearchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSearchCell.h; sourceTree = "<group>"; };
@@ -78,6 +131,12 @@
 		18EBB3571E21C064002D7A33 /* Ping-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Ping-Prefix.pch"; sourceTree = "<group>"; };
 		18EBB3691E21C5D1002D7A33 /* PGHomeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGHomeVC.h; sourceTree = "<group>"; };
 		18EBB36A1E21C5D1002D7A33 /* PGHomeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGHomeVC.m; sourceTree = "<group>"; };
+		18FB8F551E46AE67000D1CB9 /* PGHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGHomeViewController.h; sourceTree = "<group>"; };
+		18FB8F561E46AE67000D1CB9 /* PGHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGHomeViewController.m; sourceTree = "<group>"; };
+		18FB8F591E46AFFE000D1CB9 /* PGHomeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGHomeView.h; sourceTree = "<group>"; };
+		18FB8F5A1E46AFFE000D1CB9 /* PGHomeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGHomeView.m; sourceTree = "<group>"; };
+		18FB8F5C1E46B010000D1CB9 /* PGHomeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGHomeModel.h; sourceTree = "<group>"; };
+		18FB8F5D1E46B010000D1CB9 /* PGHomeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGHomeModel.m; sourceTree = "<group>"; };
 		452EC4A6826B806213E8F6D0 /* Pods-PingUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PingUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PingUITests/Pods-PingUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		469661060AB955EE956644E3 /* libPods-PingUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PingUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50E247D983B273FB0BFB1A26 /* libPods-PingTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PingTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -116,6 +175,72 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		181964451E3415080051CA4D /* LandingPage */ = {
+			isa = PBXGroup;
+			children = (
+				181964461E34152F0051CA4D /* PGLandingVC.h */,
+				181964471E34152F0051CA4D /* PGLandingVC.m */,
+			);
+			name = LandingPage;
+			sourceTree = "<group>";
+		};
+		186FABC71E54295A004C22D8 /* MapPage */ = {
+			isa = PBXGroup;
+			children = (
+				186FABC81E542976004C22D8 /* PGMapViewController.h */,
+				186FABC91E542976004C22D8 /* PGMapViewController.m */,
+				186FABCB1E54299E004C22D8 /* PGMapModel.h */,
+				186FABCC1E54299E004C22D8 /* PGMapModel.m */,
+				186FABCE1E5429D1004C22D8 /* PGMapInteraceView.h */,
+				186FABCF1E5429D1004C22D8 /* PGMapInteraceView.m */,
+				186FABD11E5429DF004C22D8 /* PGMapToolbarView.h */,
+				186FABD21E5429DF004C22D8 /* PGMapToolbarView.m */,
+				186FABD41E57D69A004C22D8 /* PGTagEditView.h */,
+				186FABD51E57D69A004C22D8 /* PGTagEditView.m */,
+				186FABD71E593F13004C22D8 /* PGTagHolderView.h */,
+				186FABD81E593F13004C22D8 /* PGTagHolderView.m */,
+				186FABDA1E676D6A004C22D8 /* PGMenuView.h */,
+				186FABDB1E676D6A004C22D8 /* PGMenuView.m */,
+			);
+			name = MapPage;
+			sourceTree = "<group>";
+		};
+		18B6EE411E4674E800083218 /* Dep */ = {
+			isa = PBXGroup;
+			children = (
+				181964451E3415080051CA4D /* LandingPage */,
+				18DF519C1E2362EA00432568 /* MapInterface */,
+				18DF51981E23161F00432568 /* GamePage */,
+				18DF51901E22375900432568 /* SplashView */,
+				18EBB3581E21C3D4002D7A33 /* HomeView */,
+			);
+			name = Dep;
+			sourceTree = "<group>";
+		};
+		18B6EE431E46750800083218 /* LandingPage */ = {
+			isa = PBXGroup;
+			children = (
+				18B6EE441E46752A00083218 /* PGLandingViewController.h */,
+				18B6EE451E46752A00083218 /* PGLandingViewController.m */,
+				18B6EE471E4675D400083218 /* PGLandingModel.h */,
+				18B6EE481E4675D400083218 /* PGLandingModel.m */,
+				1819644B1E345CE10051CA4D /* PGGradientView.h */,
+				1819644C1E345CE10051CA4D /* PGGradientView.m */,
+				18B6EE4A1E46864F00083218 /* PGLandingView.h */,
+				18B6EE4B1E46864F00083218 /* PGLandingView.m */,
+			);
+			name = LandingPage;
+			sourceTree = "<group>";
+		};
+		18B6EE4D1E4686DB00083218 /* Popovers */ = {
+			isa = PBXGroup;
+			children = (
+				18B6EE4E1E4686F600083218 /* PGErrorView.h */,
+				18B6EE4F1E4686F600083218 /* PGErrorView.m */,
+			);
+			name = Popovers;
+			sourceTree = "<group>";
+		};
 		18DF51901E22375900432568 /* SplashView */ = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +272,8 @@
 				189E106E1E25FDD200A02FF1 /* PGMapView.m */,
 				189E10701E26048B00A02FF1 /* PGToolbarView.h */,
 				189E10711E26048B00A02FF1 /* PGToolbarView.m */,
+				180B23D01E3EB4360028D05B /* PGAdminControlView.h */,
+				180B23D11E3EB4360028D05B /* PGAdminControlView.m */,
 			);
 			name = MapInterface;
 			sourceTree = "<group>";
@@ -176,16 +303,19 @@
 		18EBB3231E21BEAC002D7A33 /* Ping */ = {
 			isa = PBXGroup;
 			children = (
-				18DF519C1E2362EA00432568 /* MapInterface */,
-				18DF51981E23161F00432568 /* GamePage */,
-				18DF51901E22375900432568 /* SplashView */,
-				18EBB3581E21C3D4002D7A33 /* HomeView */,
+				186FABC71E54295A004C22D8 /* MapPage */,
+				18FB8F5F1E5411FD000D1CB9 /* GamePage */,
+				18FB8F541E46AE53000D1CB9 /* HomePage */,
+				18B6EE4D1E4686DB00083218 /* Popovers */,
+				18B6EE431E46750800083218 /* LandingPage */,
+				18B6EE411E4674E800083218 /* Dep */,
 				18EBB3271E21BEAC002D7A33 /* AppDelegate.h */,
 				18EBB3281E21BEAC002D7A33 /* AppDelegate.m */,
 				18EBB3301E21BEAC002D7A33 /* Assets.xcassets */,
 				18EBB3351E21BEAC002D7A33 /* Info.plist */,
 				188BD1661E220E950082B943 /* GoogleService-Info.plist */,
 				18EBB3241E21BEAC002D7A33 /* Supporting Files */,
+				181964491E34185A0051CA4D /* Data.plist */,
 			);
 			path = Ping;
 			sourceTree = "<group>";
@@ -222,10 +352,34 @@
 			children = (
 				18EBB3691E21C5D1002D7A33 /* PGHomeVC.h */,
 				18EBB36A1E21C5D1002D7A33 /* PGHomeVC.m */,
-				18DF51951E22ED8A00432568 /* PGSearchCell.h */,
-				18DF51961E22ED8A00432568 /* PGSearchCell.m */,
 			);
 			name = HomeView;
+			sourceTree = "<group>";
+		};
+		18FB8F541E46AE53000D1CB9 /* HomePage */ = {
+			isa = PBXGroup;
+			children = (
+				18FB8F551E46AE67000D1CB9 /* PGHomeViewController.h */,
+				18FB8F561E46AE67000D1CB9 /* PGHomeViewController.m */,
+				18DF51951E22ED8A00432568 /* PGSearchCell.h */,
+				18DF51961E22ED8A00432568 /* PGSearchCell.m */,
+				18FB8F591E46AFFE000D1CB9 /* PGHomeView.h */,
+				18FB8F5A1E46AFFE000D1CB9 /* PGHomeView.m */,
+				18FB8F5C1E46B010000D1CB9 /* PGHomeModel.h */,
+				18FB8F5D1E46B010000D1CB9 /* PGHomeModel.m */,
+			);
+			name = HomePage;
+			sourceTree = "<group>";
+		};
+		18FB8F5F1E5411FD000D1CB9 /* GamePage */ = {
+			isa = PBXGroup;
+			children = (
+				186FABC11E541B0C004C22D8 /* PGGamePageViewController.h */,
+				186FABC21E541B0C004C22D8 /* PGGamePageViewController.m */,
+				186FABC41E541B20004C22D8 /* PGGameView.h */,
+				186FABC51E541B20004C22D8 /* PGGameView.m */,
+			);
+			name = GamePage;
 			sourceTree = "<group>";
 		};
 		54EC1E1377A56457B211247C /* Pods */ = {
@@ -366,6 +520,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1819644A1E34185A0051CA4D /* Data.plist in Resources */,
 				18EBB3311E21BEAC002D7A33 /* Assets.xcassets in Resources */,
 				188BD1671E220E950082B943 /* GoogleService-Info.plist in Resources */,
 			);
@@ -530,17 +685,36 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18B6EE491E4675D400083218 /* PGLandingModel.m in Sources */,
+				18453E1D1E260FEB004A3944 /* PGMapInterfaceVC.m in Sources */,
+				186FABC61E541B20004C22D8 /* PGGameView.m in Sources */,
+				18B6EE461E46752A00083218 /* PGLandingViewController.m in Sources */,
+				186FABCA1E542976004C22D8 /* PGMapViewController.m in Sources */,
+				18B6EE4C1E46864F00083218 /* PGLandingView.m in Sources */,
+				181964481E34152F0051CA4D /* PGLandingVC.m in Sources */,
 				18EBB3291E21BEAC002D7A33 /* AppDelegate.m in Sources */,
+				186FABC31E541B0C004C22D8 /* PGGamePageViewController.m in Sources */,
 				18EBB36B1E21C5D1002D7A33 /* PGHomeVC.m in Sources */,
 				18EBB3261E21BEAC002D7A33 /* main.m in Sources */,
+				1819644D1E345CE10051CA4D /* PGGradientView.m in Sources */,
+				186FABD91E593F13004C22D8 /* PGTagHolderView.m in Sources */,
 				18DF51931E22377C00432568 /* PGSplashVC.m in Sources */,
+				186FABD31E5429DF004C22D8 /* PGMapToolbarView.m in Sources */,
+				186FABD61E57D69A004C22D8 /* PGTagEditView.m in Sources */,
+				186FABCD1E54299E004C22D8 /* PGMapModel.m in Sources */,
 				189E106F1E25FDD200A02FF1 /* PGMapView.m in Sources */,
+				186FABDC1E676D6A004C22D8 /* PGMenuView.m in Sources */,
+				18FB8F5E1E46B010000D1CB9 /* PGHomeModel.m in Sources */,
 				18DF51A31E239A8000432568 /* PGGridCell.m in Sources */,
 				18DF519B1E23164100432568 /* PGGamePageVC.m in Sources */,
+				18FB8F571E46AE67000D1CB9 /* PGHomeViewController.m in Sources */,
 				189E10721E26048B00A02FF1 /* PGToolbarView.m in Sources */,
+				18B6EE501E4686F600083218 /* PGErrorView.m in Sources */,
+				180B23D21E3EB4360028D05B /* PGAdminControlView.m in Sources */,
 				18DF51971E22ED8A00432568 /* PGSearchCell.m in Sources */,
+				186FABD01E5429D1004C22D8 /* PGMapInteraceView.m in Sources */,
+				18FB8F5B1E46AFFE000D1CB9 /* PGHomeView.m in Sources */,
 				189E106C1E25FB2A00A02FF1 /* PGFilterView.m in Sources */,
-				18DF51A01E23631800432568 /* PGMapInterfaceVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

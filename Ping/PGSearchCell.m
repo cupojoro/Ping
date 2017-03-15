@@ -7,7 +7,7 @@
 //
 
 #import "PGSearchCell.h"
-#import "PGGamePageVC.h"
+
 #import "Masonry.h"
 
 @interface PGSearchCell()
@@ -20,22 +20,18 @@
 
 @implementation PGSearchCell
 
--(id)initWith:(NSString *)title PointingTo:(NSString *)destination withParent:(UIViewController *)vc
+-(id)initWith:(NSString *)title PointingTo:(NSString *)destination withParent:(PGHomeViewController *)vc
 {
     self = [super init];
     
     self.gameTitle = title;
     self.gameDestination = destination;
     self.inUse = NO;
-    self.parent = vc;
     
     if(self){
-        
-        self.layer.borderWidth = 2;
-        self.layer.borderColor = [UIColor grayColor].CGColor;
-        
         self.title = [[UILabel alloc] init];
         self.title.text = self.gameTitle;
+        [self.title setBackgroundColor:[UIColor clearColor]];
         [self addSubview:self.title];
         [self.title mas_makeConstraints:^(MASConstraintMaker *make) {
             make.center.equalTo(self);
@@ -54,7 +50,9 @@
         }];
         
         self.button = [[UIButton alloc] init];
-        [self.button addTarget:self action:@selector(cellPicked) forControlEvents:UIControlEventTouchUpInside];
+        self.button.hidden = YES;
+        [self.button setBackgroundImage:[UIImage imageNamed:@"ButtonFrame"] forState:UIControlStateNormal];
+        [self.button addTarget:vc action:@selector(cellPicked:) forControlEvents:UIControlEventTouchUpInside];
         [self.button setEnabled:NO];
         [self addSubview:self.button];
         [self bringSubviewToFront:self.button];
@@ -62,18 +60,20 @@
             make.size.equalTo(self).multipliedBy(0.95);
             make.center.equalTo(self);
         }];
-        
+
     }
     
     return self;
 }
 
--(void)cellPicked
-{
-    PGGamePageVC *gamePage = [[PGGamePageVC alloc] initWithGameTitle:self.gameTitle andDestination:self.gameDestination];
+//-(void)cellPicked
+//{
+//    self.inUse = NO;
     
-    [self.parent.navigationController pushViewController:gamePage animated:NO];
-}
+    //PGGamePageVC *gamePage = [[PGGamePageVC alloc] initWithGameTitle:self.gameTitle andDestination:self.gameDestination];
+    
+    //[self.parent.navigationController pushViewController:gamePage animated:NO];
+//}
 -(void)updateCell
 {
     [self.title setText:self.gameTitle];
@@ -87,6 +87,7 @@
     self.gameDestination = destination;
     self.arrow.hidden = !hidden; //IS ARROW HIDDEN?
     [self.button setEnabled:hidden]; //IS BUTTON ENABLED?
+    self.button.hidden = !hidden;
     [self updateCell];
 }
 @end

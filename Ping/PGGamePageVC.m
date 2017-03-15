@@ -39,11 +39,11 @@ NSMutableArray *mapNames;
         totalShownRows = 4;
         totalMaps = 0;
         mapNames = [[NSMutableArray alloc] init];
-        
-        [[[[self.dataRef child:@"activeGames"] child:gameDestination] child:@"gridValues"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        NSString *path = [NSString stringWithFormat:@"activeGames/%@/info/mapNames", gameDestination];
+        [[self.dataRef child:path] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
             for(FIRDataSnapshot *child in snapshot.children){
-                NSLog(@"MAP NAMES : %@", child.key);
-                [mapNames addObject:child.key];
+                NSLog(@"MAP NAMES : %@", child.value);
+                [mapNames addObject:child.value];
             }
         }];
     }
@@ -56,8 +56,9 @@ NSMutableArray *mapNames;
     [[self navigationController] setNavigationBarHidden:NO];
     
     // Do any additional setup after loading the view.
-    [[[[self.dataRef child:@"activeGames"] child:gameDestination] child:@"images"]observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
-        NSURL *url = [NSURL URLWithString:snapshot.value[@"titleCard"]];
+    NSString *path = [NSString stringWithFormat:@"activeGames/%@/images/titleCard", gameDestination];
+    [[self.dataRef child:path]observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        NSURL *url = [NSURL URLWithString:snapshot.value];
         self.coverImage = [[UIImageView alloc] initWithImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:url]]];
         self.coverImage.contentMode = UIViewContentModeScaleToFill;
         self.coverImage.clipsToBounds = YES;
@@ -73,10 +74,11 @@ NSMutableArray *mapNames;
     [self.view addSubview:self.mapList];
     
     
-    [[[[self.dataRef child:@"activeGames"] child:gameDestination] child:@"info"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
-        NSNumber *mapCount = snapshot.value[@"totalMaps"];
+    NSString *path2 = [NSString stringWithFormat:@"activeGames/%@/info/totalMaps", gameDestination];
+    [[self.dataRef child:path2] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        NSNumber *mapCount = snapshot.value;
         totalMaps = [mapCount intValue];
-        NSLog(@"Total Maps = %ld", totalMaps);
+        NSLog(@"Total Maps = %ld", (long)totalMaps);
         [self.mapList reloadData];
     }];
     
@@ -103,7 +105,6 @@ NSMutableArray *mapNames;
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"NUMBER OF ROWS = %ld", (long)totalMaps);
     return totalMaps;
 }
 
@@ -114,17 +115,57 @@ NSMutableArray *mapNames;
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"BUILDING CELL #%ld with mapName: %@", indexPath.row, [mapNames objectAtIndex:indexPath.row]);
-    UITableViewCell *cell = [[UITableViewCell alloc] init];
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
+    NSString *mapContributors = [NSString stringWithFormat:@"activeGames/%@/mapContributors/%@", gameTitle, [mapNames objectAtIndex:indexPath.row]];
+    FIRDatabaseReference *dBref = [[FIRDatabase database] reference];
+    [[dBref child:mapContributors] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        NSArray *contributors = (NSArray *) snapshot.value;
+        NSUInteger total = 0;
+        NSMutableString *firstUser = [[NSMutableString alloc] initWithString:@""];
+        if(![contributors isEqual:[NSNull null]])
+        {
+            total = [contributors count];
+            firstUser = (NSMutableString *) contributors[0];
+        }
+        if([firstUser isEqualToString:@"admin"]) total = 0;
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"Population: %lu", (unsigned long) total];
+        
+    }];
     cell.textLabel.text = [mapNames objectAtIndex:indexPath.row];
-    
+    cell.imageView.image = [UIImage imageNamed:@"ButtonFrame"];
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    PGMapInterfaceVC *mapInterface = [[PGMapInterfaceVC alloc] initWithURL:[NSURL URLWithString:@"http"] andGrid:[[NSMutableArray alloc] init]];
-    [[self navigationController] pushViewController:mapInterface animated:NO];
+    FIRDatabaseReference *dBref = [[FIRDatabase database] reference];
+    NSString *path = [NSString stringWithFormat:@"activeGames/%@/gridValues/%@", gameTitle, [mapNames objectAtIndex:indexPath.row]];
+    [[dBref child:path] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        NSMutableArray *grid = (NSMutableArray *) snapshot.value;
+        NSString *mapContributors = [NSString stringWithFormat:@"activeGames/%@/mapContributors/%@", gameTitle, [mapNames objectAtIndex:indexPath.row]];
+        [[dBref child:mapContributors] runTransactionBlock:^FIRTransactionResult * _Nonnull(FIRMutableData * _Nonnull currentData) {
+            NSMutableArray *contributors = (NSMutableArray *) currentData.value;
+            if(contributors == nil || [contributors isEqual:[NSNull null]]) return [FIRTransactionResult successWithValue:currentData];
+            NSString *username = [[NSUserDefaults standardUserDefaults] objectForKey:@"Username"];
+            for(NSString *user in contributors)
+            {
+                if([user isEqualToString:@"admin"] && [contributors indexOfObject:user] == 0)
+                {
+                    [contributors removeAllObjects];
+                    break;
+                }
+                if([user isEqualToString:username]) return [FIRTransactionResult successWithValue:currentData];
+            }
+            [contributors addObject:username];
+            currentData.value = contributors;
+            return [FIRTransactionResult successWithValue:currentData];
+        }andCompletionBlock:^(NSError * _Nullable error, BOOL committed, FIRDataSnapshot * _Nullable snapshot) {
+            if(committed){
+            PGMapInterfaceVC *mapInterface = [[PGMapInterfaceVC alloc] initWithURL:[NSURL URLWithString:@"http"] andGrid:grid andTitle:gameTitle andMap:[mapNames objectAtIndex:indexPath.row]];
+            [[self navigationController] pushViewController:mapInterface animated:NO];
+            }
+        }];
+    }];
 }
 
 

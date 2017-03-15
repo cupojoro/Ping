@@ -12,4 +12,7 @@
 
 @interface PGFilterView : UIView
 -(id)initWithMapInterface: (PGMapInterfaceVC *) mapIV;
+
+-(NSInteger)getStarFilterValue;
+
 @end

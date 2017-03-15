@@ -15,7 +15,6 @@
 @property (nonatomic, strong) PGMapInterfaceVC *mapInterface;
 
 //THIS SHOULD PROBABLY BE HANDLED AS A POPOVER
-@property (nonatomic, strong) UIView *filterView;
 @property (nonatomic, strong) UILabel *starFilterLabel;
 @property (nonatomic, strong) UILabel *colorFilterLabel;
 @property (nonatomic, strong) UITextField *starFilterField;
@@ -24,11 +23,12 @@
 @property (nonatomic, strong) UIButton *redButton;
 @property (nonatomic, strong) UIButton *whiteButton;
 @property (nonatomic, strong) UIButton *filterAccept;
+@property (nonatomic, strong) UIButton *reloadDataButton;
+
+@property (nonatomic) NSInteger starFilter;
 
 @end
 @implementation PGFilterView
-
-NSInteger starFilter = 0;
 
 -(id)initWithMapInterface: (PGMapInterfaceVC *) mapIV
 {
@@ -41,11 +41,11 @@ NSInteger starFilter = 0;
     
     self.starFilterLabel =[[UILabel alloc] init];
     [self.starFilterLabel setText:@"Shows icons with star rating of atleast:"];
-    [self.filterView addSubview:self.starFilterLabel];
+    [self addSubview:self.starFilterLabel];
     
     self.colorFilterLabel = [[UILabel alloc] init];
     [self.colorFilterLabel setText:@"Change icon color"];
-    [self.filterView addSubview:self.colorFilterLabel];
+    [self addSubview:self.colorFilterLabel];
     
     self.starFilterField = [[UITextField alloc] init];
     [self.starFilterField setPlaceholder:@"0"];
@@ -55,10 +55,10 @@ NSInteger starFilter = 0;
     [self.starFilterField setTextAlignment:NSTextAlignmentCenter];
     [self.starFilterField setKeyboardType:UIKeyboardTypeNumberPad];
     [self.starFilterField reloadInputViews];
-    [self.filterView addSubview:self.starFilterField];
+    [self addSubview:self.starFilterField];
     
     self.colorFilterView = [[UIView alloc] init];
-    [self.filterView addSubview:self.colorFilterView];
+    [self addSubview:self.colorFilterView];
     
     self.blackButton = [[UIButton alloc] init];
     self.blackButton.tag = 1;
@@ -81,42 +81,50 @@ NSInteger starFilter = 0;
     self.filterAccept = [[UIButton alloc] init];
     [self.filterAccept setTitle:@"ACCEPT" forState:UIControlStateNormal];
     [self.filterAccept addTarget:self.mapInterface action:@selector(updateFilter) forControlEvents:UIControlEventTouchUpInside];
-    [self.filterView addSubview:self.filterAccept];
+    [self addSubview:self.filterAccept];
     
-    [self applyMASConstraints];
+    self.reloadDataButton = [[UIButton alloc] init];
+    [self.reloadDataButton setTitle:@"RELOAD VOTER DATA" forState:UIControlStateNormal];
+    [self.reloadDataButton addTarget:self action:@selector(reloadVoterData) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:self.reloadDataButton];
     
     return self;
 }
 
--(void) applyMASConstraints
+-(void) updateConstraints
 {
     [self.filterAccept mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.equalTo(self.filterView);
-        make.bottom.equalTo(self.filterView);
-        make.left.equalTo(self.filterView.mas_left);
+        make.width.equalTo(self);
+        make.bottom.equalTo(self);
+        make.left.equalTo(self.mas_left);
     }];
     
     [self.starFilterLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.filterView.mas_left);
-        make.centerY.equalTo(self.filterView.mas_bottom).dividedBy(3);
-        make.width.lessThanOrEqualTo(self.filterView.mas_width).multipliedBy(0.75);
+        make.left.equalTo(self.mas_left);
+        make.centerY.equalTo(self.mas_bottom).dividedBy(3);
+        make.width.lessThanOrEqualTo(self.mas_width).multipliedBy(0.75);
     }];
     
     [self.starFilterField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.starFilterLabel.mas_right);
         make.centerY.equalTo(self.starFilterLabel.mas_centerY);
-        make.right.equalTo(self.filterView.mas_right);
+        make.right.equalTo(self.mas_right);
+    }];
+    
+    [self.reloadDataButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.starFilterField.mas_bottom);
+        make.centerX.equalTo(self.starFilterField.mas_centerX);
     }];
     
     [self.colorFilterLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.filterView.mas_left);
-        make.centerY.equalTo(self.filterView.mas_bottom).multipliedBy(0.66);
-        make.width.lessThanOrEqualTo(self.filterView.mas_width).multipliedBy(0.75);
+        make.left.equalTo(self.mas_left);
+        make.centerY.equalTo(self.mas_bottom).multipliedBy(0.66);
+        make.width.lessThanOrEqualTo(self.mas_width).multipliedBy(0.75);
     }];
     
     [self.colorFilterView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.colorFilterLabel.mas_right);
-        make.right.equalTo(self.filterView.mas_right);
+        make.right.equalTo(self.mas_right);
         make.centerY.equalTo(self.colorFilterLabel.mas_centerY);
     }];
     
@@ -139,15 +147,27 @@ NSInteger starFilter = 0;
         make.bottom.equalTo(self.colorFilterView);
         make.width.equalTo(self.colorFilterView).dividedBy(3);
     }];
+    
+    [super updateConstraints];
+}
+
+-(void)reloadVoterData
+{
+    [self.mapInterface reloadMapDataWithVoter:YES];
+}
+-(NSInteger)getStarFilterValue
+{
+    return self.starFilter;
 }
 
 -(void)textFieldDidEndEditing:(UITextField *)textField reason:(UITextFieldDidEndEditingReason)reason
 {
-    starFilter = [textField.text integerValue];
+    self.starFilter = [textField.text integerValue];
 }
 
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
+    
     if([string rangeOfCharacterFromSet:[NSCharacterSet decimalDigitCharacterSet].invertedSet].location != NSNotFound) return NO;
     if(range.length + range.location > textField.text.length) return NO;
     NSUInteger newLength = [textField.text length] + [string length] - range.length;

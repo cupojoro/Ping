@@ -9,6 +9,7 @@
 #import "PGHomeVC.h"
 
 #import "PGSearchCell.h"
+#import "PGGamePageVC.h"
 
 #import "Masonry.h"
 #import "Firebase.h"
@@ -20,8 +21,6 @@
 @property (nonatomic, strong) UIPageControl* fgPageControl;
 @property (nonatomic, strong) UISearchBar* gameSearchBar;
 @property (nonatomic, strong) NSMutableArray* searchResultViews;
-
-@property (nonatomic, strong) FIRDatabaseReference *dataRef;
 
 @end
 
@@ -46,8 +45,6 @@
         storageURL = @"gs://ping-75955.appspot.com";
         maxSearchResults = 5;
         
-        self.dataRef = [[FIRDatabase database] reference];
-        
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(keyboardWillShow:)
                                                      name:UIKeyboardWillShowNotification
@@ -56,6 +53,8 @@
                                                  selector:@selector(keyboardWillDismiss:)
                                                      name:UIKeyboardWillHideNotification
                                                    object:nil];
+        NSString *lastSearch = [[NSUserDefaults standardUserDefaults] objectForKey:@"LastSearch"];
+        if(lastSearch != NULL) searchResults = lastSearch;
     }
     return self;
 }
@@ -86,7 +85,6 @@
     self.gameSearchBar.translucent = YES;
     [self.gameSearchBar setKeyboardType:UIKeyboardTypeASCIICapable];
     
-    
     [self.view addSubview:self.featureGameView];
     [self.view addSubview:self.fgPageControl];
     [self.view addSubview:self.gameSearchBar];
@@ -103,6 +101,7 @@
     [[self navigationController] setNavigationBarHidden:YES animated:NO];
     
     [self setFeaturedImages];
+    if(searchResults != NULL) [self quierySearchResults];
 }
 
 
@@ -134,6 +133,7 @@
 }
 
 -(void) createSearchBar{
+    /*
     if(self.searchResultViews != NULL) return;
     self.searchResultViews = [[NSMutableArray alloc] initWithCapacity:maxSearchResults];
     float cellHeight = (self.view.frame.size.height - self.gameSearchBar.frame.size.height * 2 ) / (2 * maxSearchResults);
@@ -146,30 +146,38 @@
         [view mas_makeConstraints:^(MASConstraintMaker *make) {
             make.width.equalTo(self.view);
             make.height.equalTo([NSNumber numberWithFloat:cellHeight]);
-            if(viewNumber == 0){
-                make.bottom.equalTo(self.view.mas_bottom);
-            }else{
+            if(viewNumber == (maxSearchResults - 1)){
                 UIView *temp = [self.searchResultViews objectAtIndex:(viewNumber-1)];
-                make.bottom.equalTo(temp.mas_top);
+                make.top.equalTo(temp.mas_bottom);
+                make.bottom.equalTo(self.view.mas_bottom);
+            }else if(viewNumber != 0){
+                UIView *temp = [self.searchResultViews objectAtIndex:(viewNumber-1)];
+                make.top.equalTo(temp.mas_bottom);
             }
         }];
     }
+     */
 }
 
 -(void) setFeaturedImages{
     
     //Need to access images this way since we will never know the image name thats in storage
-    
-    [[self.dataRef child:@"featuredImages"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+    FIRDatabaseReference *dataRef = [[FIRDatabase database] reference];
+    [[dataRef child:@"featuredImages"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         NSMutableString *tag = [[NSMutableString alloc] initWithString:@"f0URL"];
         for( int imageNumber = 0; imageNumber < totalFeaturedGames; imageNumber++){
             [tag replaceCharactersInRange:NSMakeRange(1, 1) withString:[@(imageNumber) stringValue]];
             NSURL *url = [NSURL URLWithString:snapshot.value[tag]];
             UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:url]]];
+            imageView.tag = imageNumber;
             imageView.contentMode = UIViewContentModeScaleToFill;
             imageView.clipsToBounds = YES;
             imageView.frame = CGRectMake( self.featureGameView.frame.size.width * imageNumber, 0, self.featureGameView.frame.size.width, self.featureGameView.frame.size.height);
             [self.featureGameView addSubview:imageView];
+            UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(featureGameTap:)];
+            singleTap.numberOfTapsRequired = 1;
+            [imageView setUserInteractionEnabled: YES];
+            [imageView addGestureRecognizer:singleTap];
         }
         
     }];
@@ -182,6 +190,19 @@
     float fractionalPage = self.featureGameView.contentOffset.x /pageWidth;
     NSInteger page = lround(fractionalPage);
     self.fgPageControl.currentPage = page;
+}
+
+-(void)featureGameTap: (UITapGestureRecognizer *) sender {
+    UIImageView *iV = (UIImageView *) [sender view];
+    FIRDatabaseReference *dataRef = [[FIRDatabase database] reference];
+    NSString *fName;
+    if(iV.tag == 0) fName = @"f0Name";
+    else if(iV.tag == 1) fName = @"f1Name";
+    else if(iV.tag == 2) fName = @"f2Name";
+    [[dataRef child:@"featuredImages"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        PGGamePageVC *gamePage = [[PGGamePageVC alloc] initWithGameTitle:snapshot.value[fName] andDestination:snapshot.value[fName]];
+        [self.navigationController pushViewController:gamePage animated:NO];
+    }];
 }
 
 #pragma mark Keyboard
@@ -228,6 +249,7 @@
         cell.inUse = NO;
     }
     searchResults = [searchBar.text lowercaseString];
+    [[NSUserDefaults standardUserDefaults] setObject:searchResults forKey:@"LastSearch"];
     [self.view endEditing:YES];
     [self quierySearchResults];
 }
@@ -237,8 +259,8 @@
 -(void) quierySearchResults
 {
     NSString *currentSearch = searchResults;
-    
-    FIRDatabaseQuery *gameList = [self.dataRef child:@"gameList"];
+    FIRDatabaseReference *dataRef = [[FIRDatabase database] reference];
+    FIRDatabaseQuery *gameList = [dataRef child:@"gameList"];
     [gameList observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         BOOL foundData = NO;
         for(FIRDataSnapshot *child in snapshot.children){

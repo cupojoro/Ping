@@ -12,8 +12,9 @@
 
 @interface PGMapView : UIView
 
--(id) initWithFrame:(CGRect)viewFrame mapInterface:(PGMapInterfaceVC *)mapIV;
+-(id) initWithMapInterface:(PGMapInterfaceVC *)mapIV andGridSize:(int)size andGridData:(NSMutableArray *)gData;
 -(void)gridSwitch;
--(void)reloadGrid;
-
+-(void)reloadGridWithVoters:(BOOL)update;
+-(bool)hasItemAtIndex:(int)cell;
+-(void)forceGrid:(BOOL)value;
 @end

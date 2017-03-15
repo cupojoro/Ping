@@ -9,6 +9,7 @@
 
 #import "Firebase.h"
 #import "PGSplashVC.h"
+#import "PGLandingViewController.h"
 
 @interface AppDelegate ()
 
@@ -25,8 +26,11 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-    PGSplashVC *splashVC = [[PGSplashVC alloc] init];
-    UINavigationController* navController = [[UINavigationController alloc] initWithRootViewController:splashVC];
+    //PGSplashVC *splashVC = [[PGSplashVC alloc] init];
+    //UINavigationController* navController = [[UINavigationController alloc] initWithRootViewController:splashVC];
+    
+    PGLandingViewController *landingVC = [[PGLandingViewController alloc] init];
+    UINavigationController* navController = [[UINavigationController alloc] initWithRootViewController:landingVC];
     
     self.window.rootViewController = navController;
     

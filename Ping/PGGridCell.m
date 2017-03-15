@@ -31,7 +31,6 @@
 -(void)prepareForReuse
 {
     [super prepareForReuse];
-    
     [self.iconView removeFromSuperview];
     self.iconView = nil;
 }
