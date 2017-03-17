@@ -25,3 +25,4 @@ A lot of the values/paths are hard coded for debugging purposes.
 The database and storage is hosted through Firebase.
 The Firebase organization is denormalized so if interested shoot me a message and I'll break it down for you.
 Currently trying to clean up the code. (I like to pump code out to make sure the idea is down and then clean up)
+I am using Cocoapods / Masonry for layout and Firebase SDK.
